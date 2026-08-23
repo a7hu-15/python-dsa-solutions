@@ -11,15 +11,20 @@ Each implementation includes:
 
 ```
 python-dsa-solutions/
-├── sorting/
-│   ├── merge_sort.py
-│   └── quick_sort.py
+├── data_structures/
+│   ├── binary_search_tree.py
+│   ├── linked_list.py
+│   ├── queue.py
+│   └── stack.py
+├── graphs/
+│   └── dijkstra.py
 ├── searching/
 │   ├── binary_search.py
 │   └── interpolation_search.py
-├── data_structures/
-│   ├── linked_list.py
-│   └── stack.py
+├── sorting/
+│   ├── heap_sort.py
+│   ├── merge_sort.py
+│   └── quick_sort.py
 └── README.md
 ```
 
