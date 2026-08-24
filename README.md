@@ -15,9 +15,11 @@ python-dsa-solutions/
 │   ├── binary_search_tree.py
 │   ├── linked_list.py
 │   ├── queue.py
-│   └── stack.py
+│   ├── stack.py
+│   └── trie.py
 ├── graphs/
-│   └── dijkstra.py
+│   ├── dijkstra.py
+│   └── graph_traversals.py
 ├── searching/
 │   ├── binary_search.py
 │   └── interpolation_search.py
