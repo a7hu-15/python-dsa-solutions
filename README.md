@@ -21,7 +21,8 @@ python-dsa-solutions/
 │   └── dp_solutions.py
 ├── graphs/
 │   ├── dijkstra.py
-│   └── graph_traversals.py
+│   ├── graph_traversals.py
+│   └── kruskal_mst.py
 ├── searching/
 │   ├── binary_search.py
 │   └── interpolation_search.py
