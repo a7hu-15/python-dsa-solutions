@@ -19,7 +19,8 @@ python-dsa-solutions/
 │   └── trie.py
 ├── graphs/
 │   ├── dijkstra.py
-│   └── graph_traversals.py
+│   ├── graph_traversals.py
+│   └── topological_sort.py
 ├── searching/
 │   ├── binary_search.py
 │   └── interpolation_search.py
