@@ -17,6 +17,8 @@ python-dsa-solutions/
 │   ├── queue.py
 │   ├── stack.py
 │   └── trie.py
+├── dynamic_programming/
+│   └── dp_solutions.py
 ├── graphs/
 │   ├── dijkstra.py
 │   └── graph_traversals.py
