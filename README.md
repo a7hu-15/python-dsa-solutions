@@ -23,7 +23,8 @@ python-dsa-solutions/
 ├── graphs/
 │   ├── dijkstra.py
 │   ├── graph_traversals.py
-│   └── kruskal_mst.py
+│   ├── kruskal_mst.py
+│   └── topological_sort.py
 ├── searching/
 │   ├── binary_search.py
 │   └── interpolation_search.py
