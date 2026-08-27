@@ -15,6 +15,7 @@ python-dsa-solutions/
 │   ├── binary_search_tree.py
 │   ├── linked_list.py
 │   ├── queue.py
+│   ├── segment_tree.py
 │   ├── stack.py
 │   └── trie.py
 ├── dynamic_programming/
