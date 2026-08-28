@@ -13,6 +13,7 @@ Each implementation includes:
 python-dsa-solutions/
 ├── data_structures/
 │   ├── binary_search_tree.py
+│   ├── disjoint_set.py
 │   ├── fenwick_tree.py
 │   ├── linked_list.py
 │   ├── lru_cache.py
@@ -23,10 +24,12 @@ python-dsa-solutions/
 ├── dynamic_programming/
 │   └── dp_solutions.py
 ├── graphs/
+│   ├── a_star.py
 │   ├── bellman_ford.py
 │   ├── dijkstra.py
 │   ├── floyd_warshall.py
 │   ├── graph_traversals.py
+│   ├── kosaraju_scc.py
 │   ├── kruskal_mst.py
 │   ├── tarjan_scc.py
 │   └── topological_sort.py
