@@ -29,10 +29,12 @@ python-dsa-solutions/
 │   ├── a_star.py
 │   ├── bellman_ford.py
 │   ├── dijkstra.py
+│   ├── eulerian_path.py
 │   ├── floyd_warshall.py
 │   ├── graph_traversals.py
 │   ├── kosaraju_scc.py
 │   ├── kruskal_mst.py
+│   ├── max_flow_edmonds_karp.py
 │   ├── tarjan_scc.py
 │   └── topological_sort.py
 ├── searching/
@@ -44,6 +46,16 @@ python-dsa-solutions/
 │   └── quick_sort.py
 └── README.md
 ```
+
+## 📊 Graph Algorithms Overview
+
+| Algorithm | File | Time Complexity | Space Complexity | Use Case |
+|---|---|---|---|---|
+| **Edmonds-Karp Max Flow** | `graphs/max_flow_edmonds_karp.py` | $O(V \cdot E^2)$ | $O(V + E)$ | Network flow optimization & Min-Cut |
+| **Hierholzer's Eulerian Path** | `graphs/eulerian_path.py` | $O(V + E)$ | $O(V + E)$ | Eulerian path/circuit detection & reconstruction |
+| **A\* Pathfinding** | `graphs/a_star.py` | $O(E)$ worst case | $O(V)$ | Heuristic 2D grid pathfinding |
+| **Kosaraju's SCC** | `graphs/kosaraju_scc.py` | $O(V + E)$ | $O(V)$ | Strongly Connected Components (2-pass DFS) |
+| **Tarjan's SCC** | `graphs/tarjan_scc.py` | $O(V + E)$ | $O(V)$ | Strongly Connected Components (Single-pass DFS) |
 
 ## 🚀 How to Run
 
