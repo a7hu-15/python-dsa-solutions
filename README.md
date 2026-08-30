@@ -12,6 +12,7 @@ Each implementation includes:
 ```
 python-dsa-solutions/
 ├── data_structures/
+│   ├── b_tree.py
 │   ├── binary_search_tree.py
 │   ├── disjoint_set.py
 │   ├── fenwick_tree.py
@@ -19,6 +20,7 @@ python-dsa-solutions/
 │   ├── lru_cache.py
 │   ├── queue.py
 │   ├── segment_tree.py
+│   ├── skip_list.py
 │   ├── stack.py
 │   └── trie.py
 ├── dynamic_programming/
