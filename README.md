@@ -32,6 +32,7 @@ python-dsa-solutions/
 │   ├── eulerian_path.py
 │   ├── floyd_warshall.py
 │   ├── graph_traversals.py
+│   ├── hopcroft_karp.py
 │   ├── kosaraju_scc.py
 │   ├── kruskal_mst.py
 │   ├── max_flow_edmonds_karp.py
@@ -51,6 +52,7 @@ python-dsa-solutions/
 
 | Algorithm | File | Time Complexity | Space Complexity | Use Case |
 |---|---|---|---|---|
+| **Hopcroft-Karp Bipartite Matching** | `graphs/hopcroft_karp.py` | $O(E \sqrt{V})$ | $O(V + E)$ | Maximum cardinality matching in bipartite graphs |
 | **Edmonds-Karp Max Flow** | `graphs/max_flow_edmonds_karp.py` | $O(V \cdot E^2)$ | $O(V + E)$ | Network flow optimization & Min-Cut |
 | **Hierholzer's Eulerian Path** | `graphs/eulerian_path.py` | $O(V + E)$ | $O(V + E)$ | Eulerian path/circuit detection & reconstruction |
 | **A\* Pathfinding** | `graphs/a_star.py` | $O(E)$ worst case | $O(V)$ | Heuristic 2D grid pathfinding |
