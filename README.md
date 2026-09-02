@@ -40,7 +40,8 @@ python-dsa-solutions/
 │   └── topological_sort.py
 ├── searching/
 │   ├── binary_search.py
-│   └── interpolation_search.py
+│   ├── interpolation_search.py
+│   └── kmp_search.py
 ├── sorting/
 │   ├── heap_sort.py
 │   ├── merge_sort.py
@@ -48,10 +49,11 @@ python-dsa-solutions/
 └── README.md
 ```
 
-## 📊 Graph Algorithms Overview
+## 📊 Graph & Searching Algorithms Overview
 
 | Algorithm | File | Time Complexity | Space Complexity | Use Case |
 |---|---|---|---|---|
+| **Knuth-Morris-Pratt (KMP)** | `searching/kmp_search.py` | $O(N + M)$ | $O(M)$ | Efficient linear-time string pattern searching using LPS array |
 | **Hopcroft-Karp Bipartite Matching** | `graphs/hopcroft_karp.py` | $O(E \sqrt{V})$ | $O(V + E)$ | Maximum cardinality matching in bipartite graphs |
 | **Edmonds-Karp Max Flow** | `graphs/max_flow_edmonds_karp.py` | $O(V \cdot E^2)$ | $O(V + E)$ | Network flow optimization & Min-Cut |
 | **Hierholzer's Eulerian Path** | `graphs/eulerian_path.py` | $O(V + E)$ | $O(V + E)$ | Eulerian path/circuit detection & reconstruction |
