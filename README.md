@@ -40,6 +40,7 @@ python-dsa-solutions/
 │   └── topological_sort.py
 ├── searching/
 │   ├── binary_search.py
+│   ├── boyer_moore.py
 │   ├── interpolation_search.py
 │   └── kmp_search.py
 ├── sorting/
@@ -53,6 +54,7 @@ python-dsa-solutions/
 
 | Algorithm | File | Time Complexity | Space Complexity | Use Case |
 |---|---|---|---|---|
+| **Boyer-Moore Search** | `searching/boyer_moore.py` | $O(N / M)$ best / $O(N + M)$ | $O(M + \|\Sigma\|)$ | Sub-linear string matching via Bad Character heuristic |
 | **Knuth-Morris-Pratt (KMP)** | `searching/kmp_search.py` | $O(N + M)$ | $O(M)$ | Efficient linear-time string pattern searching using LPS array |
 | **Hopcroft-Karp Bipartite Matching** | `graphs/hopcroft_karp.py` | $O(E \sqrt{V})$ | $O(V + E)$ | Maximum cardinality matching in bipartite graphs |
 | **Edmonds-Karp Max Flow** | `graphs/max_flow_edmonds_karp.py` | $O(V \cdot E^2)$ | $O(V + E)$ | Network flow optimization & Min-Cut |
