@@ -35,6 +35,8 @@ python-dsa-solutions/
 │   ├── hopcroft_karp.py
 │   ├── kosaraju_scc.py
 │   ├── kruskal_mst.py
+│   ├── prims_mst.py
+│   ├── prims_mst.py
 │   ├── max_flow_edmonds_karp.py
 │   ├── tarjan_scc.py
 │   └── topological_sort.py
@@ -64,6 +66,7 @@ python-dsa-solutions/
 | **A\* Pathfinding** | `graphs/a_star.py` | $O(E)$ worst case | $O(V)$ | Heuristic 2D grid pathfinding |
 | **Kosaraju's SCC** | `graphs/kosaraju_scc.py` | $O(V + E)$ | $O(V)$ | Strongly Connected Components (2-pass DFS) |
 | **Tarjan's SCC** | `graphs/tarjan_scc.py` | $O(V + E)$ | $O(V)$ | Strongly Connected Components (Single-pass DFS) |
+| **Prim's MST** | `graphs/prims_mst.py` | $O(E \log V)$ | $O(V + E)$ | Minimum Spanning Tree via Binary Min-Heap Priority Queue |
 
 ## 🚀 How to Run
 
