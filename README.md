@@ -60,6 +60,7 @@ python-dsa-solutions/
 | **Aho-Corasick Automaton** | `searching/aho_corasick.py` | $O(N + M + Z)$ | $O(M \cdot \|\Sigma\|)$ | Multi-pattern dictionary string searching using Trie failure links |
 | **Boyer-Moore Search** | `searching/boyer_moore.py` | $O(N / M)$ best / $O(N + M)$ | $O(M + \|\Sigma\|)$ | Sub-linear string matching via Bad Character heuristic |
 | **Knuth-Morris-Pratt (KMP)** | `searching/kmp_search.py` | $O(N + M)$ | $O(M)$ | Efficient linear-time string pattern searching using LPS array |
+| **Rabin-Karp Rolling Hash** | `searching/rabin_karp.py` | $O(N + M)$ avg | $O(1)$ | Substring search using polynomial rolling hash & modulus verification |
 | **Hopcroft-Karp Bipartite Matching** | `graphs/hopcroft_karp.py` | $O(E \sqrt{V})$ | $O(V + E)$ | Maximum cardinality matching in bipartite graphs |
 | **Edmonds-Karp Max Flow** | `graphs/max_flow_edmonds_karp.py` | $O(V \cdot E^2)$ | $O(V + E)$ | Network flow optimization & Min-Cut |
 | **Hierholzer's Eulerian Path** | `graphs/eulerian_path.py` | $O(V + E)$ | $O(V + E)$ | Eulerian path/circuit detection & reconstruction |
