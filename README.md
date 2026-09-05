@@ -68,6 +68,7 @@ python-dsa-solutions/
 | **Kosaraju's SCC** | `graphs/kosaraju_scc.py` | $O(V + E)$ | $O(V)$ | Strongly Connected Components (2-pass DFS) |
 | **Tarjan's SCC** | `graphs/tarjan_scc.py` | $O(V + E)$ | $O(V)$ | Strongly Connected Components (Single-pass DFS) |
 | **Prim's MST** | `graphs/prims_mst.py` | $O(E \log V)$ | $O(V + E)$ | Minimum Spanning Tree via Binary Min-Heap Priority Queue |
+| **Articulation Points & Bridges** | `graphs/articulation_points.py` | $O(V + E)$ | $O(V + E)$ | Finding Cut Vertices & Cut Edges using Tarjan's DFS discovery times |
 
 ## 🚀 How to Run
 
