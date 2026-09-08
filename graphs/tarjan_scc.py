@@ -1,83 +1,85 @@
 """
-Tarjan's Strongly Connected Components (SCC) Algorithm in Python.
+Tarjan's Strongly Connected Components (SCC) Algorithm for Directed Graphs.
 
-Tarjan's algorithm is a linear-time algorithm to find all strongly connected components
-in a directed graph. A strongly connected component is a maximal subgraph where every
-vertex is reachable from every other vertex in the component.
+A Strongly Connected Component (SCC) of a directed graph is a maximal subgraph
+where every vertex is reachable from every other vertex in the component.
 
-Complexity Analysis:
-- Time Complexity: O(V + E)
-- Space Complexity: O(V)
+Time Complexity: O(V + E)
+Space Complexity: O(V + E)
 """
 
-from typing import List, Dict
+from typing import Dict, List, Set, Tuple
 
 
 class TarjanSCC:
-    """
-    Finds Strongly Connected Components (SCC) using Tarjan's algorithm.
+    """Computes Strongly Connected Components (SCCs) in a directed graph using Tarjan's linear-time DFS algorithm."""
 
-    >>> graph = {
-    ...     0: [1],
-    ...     1: [2],
-    ...     2: [0, 3],
-    ...     3: [4],
-    ...     4: [5, 6],
-    ...     5: [3],
-    ...     6: []
-    ... }
-    >>> solver = TarjanSCC(7, graph)
-    >>> sccs = solver.get_sccs()
-    >>> sccs
-    [[6], [5, 4, 3], [2, 1, 0]]
-    """
+    def __init__(self, num_vertices: int):
+        if num_vertices < 0:
+            raise ValueError("Number of vertices cannot be negative")
+        self.num_vertices = num_vertices
+        self.adj_list: Dict[int, List[int]] = {i: [] for i in range(num_vertices)}
 
-    def __init__(self, num_vertices: int, graph: Dict[int, List[int]]):
-        self.v = num_vertices
-        self.graph = graph
-        self.index = 0
-        self.stack: List[int] = []
-        self.on_stack = [False] * self.v
-        self.indices = [-1] * self.v
-        self.low_link = [-1] * self.v
-        self.sccs: List[List[int]] = []
+    def add_edge(self, u: int, v: int) -> None:
+        """Adds a directed edge from vertex u to vertex v."""
+        if not (0 <= u < self.num_vertices and 0 <= v < self.num_vertices):
+            raise ValueError(f"Vertex indices out of bounds [0, {self.num_vertices - 1}]")
+        self.adj_list[u].append(v)
 
-    def get_sccs(self) -> List[List[int]]:
+    def find_sccs(self) -> List[List[int]]:
         """
-        Compute and return list of strongly connected components.
+        Finds all Strongly Connected Components (SCCs).
+
+        Returns:
+            List[List[int]]: List of SCCs, where each SCC is a list of vertex indices.
         """
-        for i in range(self.v):
-            if self.indices[i] == -1:
-                self._strong_connect(i)
-        return self.sccs
+        timer = 0
+        discovery_time = [-1] * self.num_vertices
+        low = [-1] * self.num_vertices
+        on_stack = [False] * self.num_vertices
+        stack: List[int] = []
+        sccs: List[List[int]] = []
 
-    def _strong_connect(self, u: int) -> None:
-        self.indices[u] = self.index
-        self.low_link[u] = self.index
-        self.index += 1
-        self.stack.append(u)
-        self.on_stack[u] = True
+        def dfs(u: int) -> None:
+            nonlocal timer
+            discovery_time[u] = low[u] = timer
+            timer += 1
+            stack.append(u)
+            on_stack[u] = True
 
-        for v in self.graph.get(u, []):
-            if self.indices[v] == -1:
-                self._strong_connect(v)
-                self.low_link[u] = min(self.low_link[u], self.low_link[v])
-            elif self.on_stack[v]:
-                self.low_link[u] = min(self.low_link[u], self.indices[v])
+            for v in self.adj_list[u]:
+                if discovery_time[v] == -1:
+                    dfs(v)
+                    low[u] = min(low[u], low[v])
+                elif on_stack[v]:
+                    low[u] = min(low[u], discovery_time[v])
 
-        if self.low_link[u] == self.indices[u]:
-            scc = []
-            while True:
-                w = self.stack.pop()
-                self.on_stack[w] = False
-                scc.append(w)
-                if w == u:
-                    break
-            self.sccs.append(scc)
+            # Root node of SCC found
+            if low[u] == discovery_time[u]:
+                component: List[int] = []
+                while True:
+                    node = stack.pop()
+                    on_stack[node] = False
+                    component.append(node)
+                    if node == u:
+                        break
+                sccs.append(sorted(component))
+
+        for i in range(self.num_vertices):
+            if discovery_time[i] == -1:
+                dfs(i)
+
+        return sccs
 
 
-if __name__ == "__main__":
-    import doctest
-    results = doctest.testmod()
-    if results.failed == 0:
-        print(f"All {results.attempted} Tarjan's SCC doctests passed successfully!")
+def find_strongly_connected_components(num_vertices: int, edges: List[Tuple[int, int]]) -> List[List[int]]:
+    """
+    Helper function to compute SCCs given vertex count and list of directed edges (u, v).
+
+    >>> find_strongly_connected_components(5, [(0, 2), (2, 1), (1, 0), (0, 3), (3, 4)])
+    [[4], [3], [0, 1, 2]]
+    """
+    g = TarjanSCC(num_vertices)
+    for u, v in edges:
+        g.add_edge(u, v)
+    return g.find_sccs()
