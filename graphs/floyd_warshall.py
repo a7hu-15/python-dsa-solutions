@@ -1,89 +1,90 @@
 """
-Floyd-Warshall All-Pairs Shortest Path Algorithm in Python.
+Floyd-Warshall All-Pairs Shortest Path Algorithm with Path Reconstruction and Negative Cycle Detection.
 
-Floyd-Warshall is a dynamic programming algorithm used to find the shortest paths
-between all pairs of vertices in a weighted graph (with positive or negative edge weights),
-and can detect negative-weight cycles.
+Computes the shortest distance between all pairs of vertices in a directed or undirected graph.
+Handles negative edge weights and detects negative-weight cycles.
 
-Complexity Analysis:
-- Time Complexity: O(V^3) where V is the number of vertices.
-- Space Complexity: O(V^2) for distance and predecessor matrices.
+Time Complexity: O(V^3)
+Space Complexity: O(V^2)
 """
 
-from typing import List, Tuple, Optional, Dict
-
-INF = float("inf")
+from typing import List, Optional, Tuple
 
 
 class FloydWarshall:
-    """
-    Floyd-Warshall All-Pairs Shortest Path implementation.
+    """Computes all-pairs shortest paths using Dynamic Programming matrix updates."""
 
-    >>> graph = [
-    ...     [0, 5, INF, 10],
-    ...     [INF, 0, 3, INF],
-    ...     [INF, INF, 0, 1],
-    ...     [INF, INF, INF, 0]
-    ... ]
-    >>> fw = FloydWarshall(4, graph)
-    >>> dist, has_neg_cycle = fw.compute_shortest_paths()
-    >>> has_neg_cycle
-    False
-    >>> dist[0][2]
-    8
-    >>> fw.reconstruct_path(0, 3)
-    [0, 1, 2, 3]
-    """
+    def __init__(self, num_vertices: int):
+        if num_vertices < 0:
+            raise ValueError("Number of vertices cannot be negative")
+        self.num_vertices = num_vertices
+        self.INF = float("inf")
+        self.dist: List[List[float]] = [
+            [0.0 if i == j else self.INF for j in range(num_vertices)] for i in range(num_vertices)
+        ]
+        self.next_node: List[List[Optional[int]]] = [
+            [j if i != j else None for j in range(num_vertices)] for i in range(num_vertices)
+        ]
 
-    def __init__(self, num_vertices: int, graph_matrix: List[List[float]]):
-        self.v = num_vertices
-        self.dist = [row[:] for row in graph_matrix]
-        self.next_node = [[None if cell == INF or i == j else j for j, cell in enumerate(row)]
-                         for i, row in enumerate(graph_matrix)]
+    def add_edge(self, u: int, v: int, weight: float, directed: bool = True) -> None:
+        """Adds a weighted edge between u and v."""
+        if not (0 <= u < self.num_vertices and 0 <= v < self.num_vertices):
+            raise ValueError(f"Vertex index out of bounds [0, {self.num_vertices - 1}]")
+        self.dist[u][v] = min(self.dist[u][v], weight)
+        self.next_node[u][v] = v
+        if not directed:
+            self.dist[v][u] = min(self.dist[v][u], weight)
+            self.next_node[v][u] = u
 
     def compute_shortest_paths(self) -> Tuple[List[List[float]], bool]:
         """
-        Compute shortest paths between all pairs of vertices.
+        Executes Floyd-Warshall dynamic programming algorithm.
+
         Returns:
-            Tuple containing distance matrix and boolean indicating presence of negative cycle.
+            Tuple[List[List[float]], bool]:
+                - Matrix of shortest path distances
+                - Boolean indicating whether a negative-weight cycle was detected
         """
-        for k in range(self.v):
-            for i in range(self.v):
-                for j in range(self.v):
-                    if self.dist[i][k] != INF and self.dist[k][j] != INF:
+        n = self.num_vertices
+        for k in range(n):
+            for i in range(n):
+                for j in range(n):
+                    if self.dist[i][k] != self.INF and self.dist[k][j] != self.INF:
                         if self.dist[i][k] + self.dist[k][j] < self.dist[i][j]:
                             self.dist[i][j] = self.dist[i][k] + self.dist[k][j]
                             self.next_node[i][j] = self.next_node[i][k]
 
-        # Check for negative-weight cycles
-        has_negative_cycle = False
-        for i in range(self.v):
-            if self.dist[i][i] < 0:
-                has_negative_cycle = True
-                break
-
+        # Negative cycle detection: dist[i][i] < 0
+        has_negative_cycle = any(self.dist[i][i] < 0 for i in range(n))
         return self.dist, has_negative_cycle
 
-    def reconstruct_path(self, u: int, v: int) -> Optional[List[int]]:
-        """
-        Reconstruct shortest path from vertex u to vertex v.
-        """
-        if self.dist[u][v] == INF:
+    def get_path(self, u: int, v: int) -> Optional[List[int]]:
+        """Reconstructs the shortest path from u to v."""
+        if self.dist[u][v] == self.INF:
             return None
-
         path = [u]
         curr = u
         while curr != v:
             curr = self.next_node[curr][v]
-            if curr is None:
-                return None
+            if curr is None or curr in path and curr != v:
+                return None  # Cycle or invalid path
             path.append(curr)
-
         return path
 
 
-if __name__ == "__main__":
-    import doctest
-    results = doctest.testmod()
-    if results.failed == 0:
-        print(f"All {results.attempted} Floyd-Warshall doctests passed successfully!")
+def floyd_warshall(
+    num_vertices: int, edges: List[Tuple[int, int, float]], directed: bool = True
+) -> Tuple[List[List[float]], bool]:
+    """
+    Helper function to calculate all-pairs shortest distances.
+
+    >>> dist, neg_cycle = floyd_warshall(3, [(0, 1, 4), (1, 2, -2), (0, 2, 5)])
+    >>> dist[0][2]
+    2.0
+    >>> neg_cycle
+    False
+    """
+    fw = FloydWarshall(num_vertices)
+    for u, v, w in edges:
+        fw.add_edge(u, v, w, directed=directed)
+    return fw.compute_shortest_paths()
