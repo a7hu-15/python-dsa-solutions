@@ -20,6 +20,7 @@ python-dsa-solutions/
 │   ├── lru_cache.py
 │   ├── queue.py
 │   ├── segment_tree.py
+│   ├── segment_tree_lazy.py
 │   ├── skip_list.py
 │   ├── stack.py
 │   └── trie.py
