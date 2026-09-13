@@ -31,6 +31,7 @@ python-dsa-solutions/
 │   ├── articulation_points.py
 │   ├── bellman_ford.py
 │   ├── dijkstra.py
+│   ├── dinic_max_flow.py
 │   ├── eulerian_path.py
 │   ├── floyd_warshall.py
 │   ├── graph_traversals.py
@@ -67,6 +68,7 @@ python-dsa-solutions/
 | **Johnson's All-Pairs Shortest Path** | `graphs/johnson_shortest_paths.py` | $O(V^2 \log V + V \cdot E)$ | $O(V^2)$ | All-pairs shortest path in sparse graphs with negative edge weights |
 | **Hopcroft-Karp Bipartite Matching** | `graphs/hopcroft_karp.py` | $O(E \sqrt{V})$ | $O(V + E)$ | Maximum cardinality matching in bipartite graphs |
 | **Edmonds-Karp Max Flow** | `graphs/max_flow_edmonds_karp.py` | $O(V \cdot E^2)$ | $O(V + E)$ | Network flow optimization & Min-Cut |
+| **Dinic's Max Flow** | `graphs/dinic_max_flow.py` | $O(V^2 \cdot E)$ | $O(V + E)$ | Fast network flow using level graphs and blocking flow |
 | **Hierholzer's Eulerian Path** | `graphs/eulerian_path.py` | $O(V + E)$ | $O(V + E)$ | Eulerian path/circuit detection & reconstruction |
 | **A\* Pathfinding** | `graphs/a_star.py` | $O(E)$ worst case | $O(V)$ | Heuristic 2D grid pathfinding |
 | **Kosaraju's SCC** | `graphs/kosaraju_scc.py` | $O(V + E)$ | $O(V)$ | Strongly Connected Components (2-pass DFS) |
