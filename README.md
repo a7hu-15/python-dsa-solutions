@@ -23,6 +23,7 @@ python-dsa-solutions/
 │   ├── segment_tree_lazy.py
 │   ├── skip_list.py
 │   ├── stack.py
+│   ├── suffix_array.py
 │   └── trie.py
 ├── dynamic_programming/
 │   └── dp_solutions.py
