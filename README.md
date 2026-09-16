@@ -42,7 +42,8 @@ python-dsa-solutions/
 │   ├── max_flow_edmonds_karp.py
 │   ├── prims_mst.py
 │   ├── tarjan_scc.py
-│   └── topological_sort.py
+│   ├── topological_sort.py
+│   └── two_sat.py
 ├── searching/
 │   ├── aho_corasick.py
 │   ├── binary_search.py
@@ -73,6 +74,7 @@ python-dsa-solutions/
 | **A\* Pathfinding** | `graphs/a_star.py` | $O(E)$ worst case | $O(V)$ | Heuristic 2D grid pathfinding |
 | **Kosaraju's SCC** | `graphs/kosaraju_scc.py` | $O(V + E)$ | $O(V)$ | Strongly Connected Components (2-pass DFS) |
 | **Tarjan's SCC** | `graphs/tarjan_scc.py` | $O(V + E)$ | $O(V)$ | Strongly Connected Components (Single-pass DFS) |
+| **2-SAT Solver** | `graphs/two_sat.py` | $O(V + E)$ | $O(V + E)$ | 2-Satisfiability formula solver using implication graph & SCCs |
 | **Prim's MST** | `graphs/prims_mst.py` | $O(E \log V)$ | $O(V + E)$ | Minimum Spanning Tree via Binary Min-Heap Priority Queue |
 | **Articulation Points & Bridges** | `graphs/articulation_points.py` | $O(V + E)$ | $O(V + E)$ | Finding Cut Vertices & Cut Edges using Tarjan's DFS discovery times |
 
